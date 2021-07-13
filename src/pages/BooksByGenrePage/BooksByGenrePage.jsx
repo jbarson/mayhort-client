@@ -6,12 +6,13 @@ import './BooksByGenrePage.scss';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
+
 function BooksByGenrePage() {
     const [books, setBooks] = useState([])
     const { genreName } = useParams();
 
     useEffect(() => {
-        axios.get(`/api/books/${genreName}`)
+        axios.get(`${process.env.REACT_APP_API_URL}/api/books/${genreName}`)
             .then(res => {
                 setBooks(res.data)
             })
